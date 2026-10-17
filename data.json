@@ -112,5 +112,11 @@
     "harga": 5000,
     "stok": 20,
     "foto": "https://down-id.img.susercontent.com/file/df8e66465fa7809f50574452af20e856"
+  },
+  {
+    "nama": "Double Tape",
+    "harga": 6000,
+    "stok": 10,
+    "foto": "https://down-id.img.susercontent.com/file/2bf8f25497090ddbf0295976126c07ee"
   }
 ]
