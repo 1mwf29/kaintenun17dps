@@ -22,7 +22,7 @@
     <!-- HEADER ATAS -->
     <header class="p-4 flex items-center justify-between bg-white sticky top-0 z-10 border-b border-gray-100">
       <div class="flex items-center gap-3">
-        <img src="Logo sekolah.jpg" class="w-10 h-10 rounded-full object-cover border shadow-sm" alt="Logo Sekolah">
+        <img src="logo.jpg" class="w-10 h-10 rounded-full object-cover border shadow-sm" alt="Logo Sekolah">
         <div>
           <h1 class="text-base font-bold text-slate-800 leading-tight">Kain Tenun</h1>
           <p class="text-xs text-gray-400">Kantin Integritas Tumbuhkan Etika, Nilai dan Nurani</p>
@@ -39,7 +39,7 @@
       <!-- BANNER GRADIEN BIRU -->
       <div class="gradient-banner text-white rounded-2xl p-4 shadow-md relative overflow-hidden flex items-center gap-4">
         <div class="relative z-10">
-          <img src="Wibi.jpg" class="w-16 h-16 rounded-full border-2 border-white/80 object-cover shadow" alt="Pengelola">
+          <img src="profil.jpg" class="w-16 h-16 rounded-full border-2 border-white/80 object-cover shadow" alt="Pengelola">
         </div>
         
         <div class="relative z-10 flex-1">
@@ -47,7 +47,7 @@
             PENGELOLA KANTIN KEJUJURAN
           </span>
           <h2 class="font-bold text-sm leading-snug">I Made Wibi Fernanda, S.Pd.</h2>
-          <p class="text-xs text-blue-100 mt-0.5 font-light">Guru SMPN 17 Denpasar</p>
+          <p class="text-xs text-blue-100 mt-0.5 font-light">Guru Pendidikan Pancasila — SMPN 17</p>
         </div>
       </div>
 
@@ -73,18 +73,22 @@
             <i class="fa-solid fa-box-open text-xl"></i>
           </div>
           <p class="font-semibold text-xs text-gray-700">Belum Ada Barang ATK</p>
-          <p class="text-[11px] text-gray-400 mt-1 max-w-[200px] mx-auto">Gunakan tab <b>Penjual</b> untuk menambahkan produk alat tulis baru.</p>
+          <p class="text-[11px] text-gray-400 mt-1 max-w-[200px] mx-auto">Gunakan tab <b>Admin</b> untuk menambahkan produk alat tulis baru.</p>
         </div>
       </section>
 
-      <!-- PENJUAL -->
-      <section id="page-penjual" class="hidden space-y-4">
+      <!-- ADMIN (FORM + KELOLA) -->
+      <section id="page-admin" class="hidden space-y-5">
+        
+        <!-- FORM TAMBAH / EDIT BARANG -->
         <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
-          <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
+          <h3 id="form-title" class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
             <i class="fa-solid fa-plus-circle text-blue-600"></i> Tambah Produk ATK Baru
           </h3>
           
-          <form id="form-atk" onsubmit="tambahBarang(event)" class="space-y-3">
+          <form id="form-atk" onsubmit="simpanBarang(event)" class="space-y-3">
+            <input type="hidden" id="edit-index" value="-1">
+            
             <div>
               <label class="block text-[11px] font-semibold text-gray-600 mb-1">Nama Barang ATK</label>
               <input type="text" id="input-nama" placeholder="Contoh: Pulpen Gel Hitam" required 
@@ -106,23 +110,29 @@
 
             <div>
               <label class="block text-[11px] font-semibold text-gray-600 mb-1">URL Foto Produk (Optional)</label>
-              <input type="url" id="input-foto" placeholder="https://..." 
+              <input type="text" id="input-foto" placeholder="nama-file.jpg atau link URL" 
                      class="w-full border text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">
-              + Simpan Ke Katalog
-            </button>
+            <div class="flex gap-2">
+              <button type="submit" id="btn-submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">
+                + Simpan Produk
+              </button>
+              <button type="button" id="btn-batal" onclick="resetForm()" class="hidden bg-gray-200 text-gray-700 font-bold text-xs py-2.5 px-4 rounded-xl transition">
+                Batal
+              </button>
+            </div>
           </form>
         </div>
 
-        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-xs space-y-2">
-          <p class="font-semibold text-gray-700">Kode Data JSON untuk `data.json` di GitHub:</p>
-          <textarea id="json-output" readonly rows="4" class="w-full p-2 bg-white border rounded-lg font-mono text-[10px] text-gray-600"></textarea>
-          <button onclick="copyJSON()" class="w-full bg-slate-800 text-white font-bold py-1.5 rounded-lg text-[11px]">
-            📋 Copy Kode JSON
-          </button>
+        <!-- DAFTAR KELOLA BARANG ADMIN -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
+            <i class="fa-solid fa-list-check text-blue-600"></i> Kelola Stok & Harga
+          </h3>
+          <div id="admin-list" class="space-y-2"></div>
         </div>
+
       </section>
 
       <!-- BAGIKAN -->
@@ -146,13 +156,35 @@
 
     </main>
 
+    <!-- MODAL POPUP PASSWORD ADMIN -->
+    <div id="password-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white rounded-2xl p-5 w-full max-w-xs shadow-2xl space-y-4 text-center">
+        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-lock text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-800 text-sm">Akses Khusus Admin</h3>
+          <p class="text-xs text-gray-400 mt-1">Masukkan kata sandi pengelola kantin</p>
+        </div>
+        <div>
+          <input type="password" id="input-pass" placeholder="Masukkan password..." 
+                 class="w-full border text-center text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+          <p id="pass-error" class="text-[10px] text-red-500 mt-1 hidden">Password salah! Akses ditolak.</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="batalPassword()" class="w-1/2 bg-gray-100 text-gray-600 font-bold py-2 rounded-xl text-xs">Batal</button>
+          <button onclick="verifikasiPassword()" class="w-1/2 bg-blue-600 text-white font-bold py-2 rounded-xl text-xs shadow">Masuk</button>
+        </div>
+      </div>
+    </div>
+
     <!-- BOTTOM NAV BAR -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-2.5 shadow-lg max-w-md mx-auto z-20">
       <button onclick="switchTab('beranda')" id="tab-beranda" class="text-blue-600 font-bold flex flex-col items-center gap-1 text-[11px]">
         <i class="fa-solid fa-house text-base"></i> Beranda
       </button>
-      <button onclick="switchTab('penjual')" id="tab-penjual" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
-        <i class="fa-solid fa-store text-base"></i> Penjual
+      <button onclick="mintaAksesAdmin()" id="tab-admin" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
+        <i class="fa-solid fa-user-shield text-base"></i> Admin
       </button>
       <button onclick="switchTab('bagikan')" id="tab-bagikan" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
         <i class="fa-solid fa-share-nodes text-base"></i> Bagikan
@@ -163,18 +195,45 @@
 
   <script>
     let produkList = [];
+    let isAdminUnlocked = false;
 
     function switchTab(tab) {
       document.getElementById('page-beranda').classList.add('hidden');
-      document.getElementById('page-penjual').classList.add('hidden');
+      document.getElementById('page-admin').classList.add('hidden');
       document.getElementById('page-bagikan').classList.add('hidden');
 
       document.getElementById('tab-beranda').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
-      document.getElementById('tab-penjual').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
+      document.getElementById('tab-admin').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
       document.getElementById('tab-bagikan').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
 
       document.getElementById(`page-${tab}`).classList.remove('hidden');
       document.getElementById(`tab-${tab}`).className = "text-blue-600 font-bold flex flex-col items-center gap-1 text-[11px]";
+    }
+
+    function mintaAksesAdmin() {
+      if (isAdminUnlocked) {
+        switchTab('admin');
+      } else {
+        document.getElementById('password-modal').classList.remove('hidden');
+        document.getElementById('input-pass').value = '';
+        document.getElementById('pass-error').classList.add('hidden');
+      }
+    }
+
+    function batalPassword() {
+      document.getElementById('password-modal').classList.add('hidden');
+    }
+
+    function verifikasiPassword() {
+      const pass = document.getElementById('input-pass').value;
+      if (pass === '@smpn17jujur') {
+        isAdminUnlocked = true;
+        document.getElementById('password-modal').classList.add('hidden');
+        switchTab('admin');
+        renderAdminList();
+      } else {
+        document.getElementById('pass-error').classList.remove('hidden');
+      }
     }
 
     function renderKatalog() {
@@ -196,7 +255,7 @@
       grid.innerHTML = filtered.map(item => `
         <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
           <div class="relative h-28 bg-gray-100">
-            <img src="${item.foto || 'https://via.placeholder.com/150?text=ATK'}" class="w-full h-full object-cover" alt="${item.nama}">
+            <img src="${item.foto || 'https://via.placeholder.com/150?text=ATK'}" class="w-full h-full object-cover" alt="${item.nama}" onerror="this.src='https://via.placeholder.com/150?text=ATK'">
             <span class="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full ${item.stok > 0 ? 'bg-blue-600 text-white' : 'bg-red-500 text-white'} shadow">
               ${item.stok > 0 ? 'Stok: ' + item.stok : 'Habis'}
             </span>
@@ -209,31 +268,82 @@
       `).join('');
     }
 
-    function tambahBarang(e) {
+    function renderAdminList() {
+      const container = document.getElementById('admin-list');
+      if (produkList.length === 0) {
+        container.innerHTML = '<p class="text-center text-xs text-gray-400 py-4">Belum ada barang untuk dikelola.</p>';
+        return;
+      }
+
+      container.innerHTML = produkList.map((item, index) => `
+        <div class="flex items-center justify-between p-2.5 bg-gray-50 border rounded-xl">
+          <div class="flex items-center gap-3">
+            <img src="${item.foto || 'https://via.placeholder.com/150?text=ATK'}" class="w-10 h-10 rounded-lg object-cover border" onerror="this.src='https://via.placeholder.com/150?text=ATK'">
+            <div>
+              <h4 class="font-bold text-xs text-gray-800">${item.nama}</h4>
+              <p class="text-[11px] text-gray-500">Rp ${Number(item.harga).toLocaleString('id-ID')} | Stok: ${item.stok}</p>
+            </div>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="editBarang(${index})" class="w-7 h-7 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xs hover:bg-blue-200">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <button onclick="hapusBarang(${index})" class="w-7 h-7 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xs hover:bg-red-200">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function simpanBarang(e) {
       e.preventDefault();
+      const idx = parseInt(document.getElementById('edit-index').value);
       const nama = document.getElementById('input-nama').value;
       const harga = Number(document.getElementById('input-harga').value);
       const stok = Number(document.getElementById('input-stok').value);
       const foto = document.getElementById('input-foto').value;
 
-      produkList.push({ nama, harga, stok, foto });
-      
-      document.getElementById('form-atk').reset();
-      updateJSONOutput();
+      if (idx === -1) {
+        produkList.push({ nama, harga, stok, foto });
+        alert('Produk berhasil ditambahkan!');
+      } else {
+        produkList[idx] = { nama, harga, stok, foto };
+        alert('Produk berhasil diperbarui!');
+      }
+
+      resetForm();
       renderKatalog();
-      alert('Produk ATK berhasil ditambahkan!');
-      switchTab('beranda');
+      renderAdminList();
     }
 
-    function updateJSONOutput() {
-      document.getElementById('json-output').value = JSON.stringify(produkList, null, 2);
+    function editBarang(index) {
+      const item = produkList[index];
+      document.getElementById('edit-index').value = index;
+      document.getElementById('input-nama').value = item.nama;
+      document.getElementById('input-harga').value = item.harga;
+      document.getElementById('input-stok').value = item.stok;
+      document.getElementById('input-foto').value = item.foto;
+
+      document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-blue-600"></i> Edit Produk ATK`;
+      document.getElementById('btn-submit').innerText = '✓ Perbarui Produk';
+      document.getElementById('btn-batal').classList.remove('hidden');
     }
 
-    function copyJSON() {
-      const copyText = document.getElementById("json-output");
-      copyText.select();
-      navigator.clipboard.writeText(copyText.value);
-      alert("Kode JSON disalin!");
+    function resetForm() {
+      document.getElementById('form-atk').reset();
+      document.getElementById('edit-index').value = "-1";
+      document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-plus-circle text-blue-600"></i> Tambah Produk ATK Baru`;
+      document.getElementById('btn-submit').innerText = '+ Simpan Produk';
+      document.getElementById('btn-batal').classList.add('hidden');
+    }
+
+    function hapusBarang(index) {
+      if (confirm(`Yakin ingin menghapus "${produkList[index].nama}"?`)) {
+        produkList.splice(index, 1);
+        renderKatalog();
+        renderAdminList();
+      }
     }
 
     function copyURL() {
@@ -244,7 +354,6 @@
     document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(window.location.href)}`;
     
     renderKatalog();
-    updateJSONOutput();
   </script>
 </body>
 </html>
