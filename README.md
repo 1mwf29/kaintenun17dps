@@ -3,429 +3,271 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kantin Kejujuran - SMP Negeri 17 Denpasar</title>
-  <!-- Tailwind CSS via CDN -->
+  <title>Kantin Kejujuran - ATK Digital</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom Styling Extensions -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    /* Smooth transitions and scroll behavior */
-    html {
-      scroll-behavior: smooth;
-    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    /* Hide scrollbars for clean UI while keeping scrollability */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+    .gradient-banner {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
     }
   </style>
 </head>
-<body class="bg-blue-50 text-slate-800 min-h-screen flex flex-col items-center justify-between pb-20 selection:bg-blue-200">
+<body class="bg-gray-50 min-h-screen pb-24 text-gray-800">
 
-  <!-- Outer Mobile Container -->
-  <div class="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col relative overflow-hidden border-x border-blue-100">
+  <!-- Container Utama HP -->
+  <div class="max-w-md mx-auto min-h-screen bg-white shadow-lg relative flex flex-col">
 
-    <!-- Header Section (Dominant Blue & White Theme) -->
-    <header class="bg-gradient-to-r from-blue-700 to-blue-600 text-white p-5 rounded-b-2xl shadow-md relative z-10">
-      <div class="flex items-center space-x-3">
-        <!-- Logo Sekolah / Placeholder -->
-        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center p-1 border border-white/20 shrink-0">
-          <img src="logo.png" 
-               alt="Logo Sekolah" 
-               class="w-full h-full object-contain" 
-               onerror="this.onerror=null; this.src='https://via.placeholder.com/100/1E40AF/FFFFFF?text=SMPN17';">
+    <!-- 1. HEADER ATAS (Persis Gambar) -->
+    <header class="p-4 flex items-center justify-between bg-white sticky top-0 z-10 border-b border-gray-100">
+      <div class="flex items-center gap-3">
+        <!-- Logo Lingkaran Kiri -->
+        <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs border shadow-sm">
+          SPN
         </div>
         <div>
-          <h1 class="text-xl font-black tracking-wide leading-tight">KANTIN KEJUJURAN</h1>
-          <p class="text-xs font-medium text-blue-100 tracking-wider">SMP NEGERI 17 DENPASAR</p>
+          <h1 class="text-base font-bold text-slate-800 leading-tight">Kantin Kejujuran</h1>
+          <p class="text-xs text-gray-400">Media Layanan Digital</p>
         </div>
       </div>
+      <!-- Tombol Lonceng Kanan -->
+      <button class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition">
+        <i class="fa-regular fa-bell text-sm"></i>
+      </button>
     </header>
 
-    <!-- Main Dynamic Content Area -->
-    <main class="flex-1 p-4 overflow-y-auto no-scrollbar">
+    <!-- CONTENT BODY -->
+    <main class="flex-1 p-4 space-y-5">
 
-      <!-- ================= 1. TAB BERANDA (KATALOG) ================= -->
-      <section id="tab-beranda" class="space-y-4">
-        
-        <!-- Search Bar -->
-        <div class="relative">
-          <input type="text" 
-                 id="search-input" 
-                 oninput="filterProduk()"
-                 placeholder="Cari makanan atau minuman..." 
-                 class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-sm">
-          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
-        </div>
-
-        <!-- Banner Info Kejujuran -->
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-start space-x-3 text-blue-900 text-xs">
-          <span class="text-lg">💡</span>
-          <div>
-            <p class="font-bold">Ambil Sendiri, Bayar Jujur!</p>
-            <p class="text-blue-700 mt-0.5">Pastikan uang dimasukkan sesuai harga tertera ke dalam kotak kasir kejujuran.</p>
+      <!-- 2. HERO BANNER GRADIEN BIRU (Persis Gambar) -->
+      <div class="gradient-banner text-white rounded-2xl p-4 shadow-md relative overflow-hidden flex items-center gap-4">
+        <!-- Profile Picture Lingkaran -->
+        <div class="relative z-10">
+          <div class="w-16 h-16 rounded-full border-2 border-white/80 overflow-hidden bg-blue-300 flex items-center justify-center text-blue-800 font-bold text-xl shadow">
+            <i class="fa-solid fa-user-tie"></i>
           </div>
         </div>
+        
+        <!-- Detail Info User -->
+        <div class="relative z-10 flex-1">
+          <span class="inline-block bg-blue-400/30 text-blue-100 text-[10px] font-semibold tracking-wider px-2 py-0.5 rounded-md uppercase mb-1 border border-blue-300/30">
+            PENGELOLA KANTIN
+          </span>
+          <h2 class="font-bold text-sm leading-snug">I Made Wibi Fernanda, S.Pd.</h2>
+          <p class="text-xs text-blue-100 mt-0.5 font-light">Guru Pendidikan Pancasila — SMPN 17</p>
+        </div>
+      </div>
 
-        <!-- Grid Katalog Produk -->
-        <div id="produk-container" class="grid grid-cols-2 gap-3.5 pt-1">
-          <!-- Items injected dynamically by JS -->
+      <!-- SECTIONS Halaman -->
+
+      <!-- A. BERANDA (Display Katalog ATK) -->
+      <section id="page-beranda" class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-pen-ruler text-blue-600"></i> Katalog Alat Tulis (ATK)
+          </h3>
+          <span id="total-item-count" class="text-xs text-gray-400 font-medium">0 Produk</span>
         </div>
 
-        <!-- Empty State (if no match) -->
-        <div id="empty-state" class="hidden text-center py-12 space-y-2">
-          <p class="text-3xl">🔍</p>
-          <p class="text-sm font-semibold text-slate-600">Jajanan tidak ditemukan</p>
-          <p class="text-xs text-slate-400">Coba cari dengan kata kunci lain.</p>
+        <!-- Filter/Search Bar -->
+        <div class="relative">
+          <input type="text" id="search-input" oninput="renderKatalog()" placeholder="Cari nama alat tulis..." 
+                 class="w-full bg-gray-100 text-xs rounded-xl pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
         </div>
 
+        <!-- Grid Display Katalog -->
+        <div id="katalog-grid" class="grid grid-cols-2 gap-3">
+          <!-- Otomatis diisi oleh JS -->
+        </div>
+
+        <!-- Empty State jika Belum Ada Barang -->
+        <div id="empty-state" class="text-center py-12 px-4 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
+          <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-box-open text-xl"></i>
+          </div>
+          <p class="font-semibold text-xs text-gray-700">Belum Ada Barang ATK</p>
+          <p class="text-[11px] text-gray-400 mt-1 max-w-[200px] mx-auto">Gunakan tab <b>Penjual</b> untuk menambahkan produk alat tulis baru.</p>
+        </div>
       </section>
 
-      <!-- ================= 2. TAB PENJUAL (GUIDE & EDITOR) ================= -->
-      <section id="tab-penjual" class="hidden space-y-5">
-        
-        <!-- Header Info Penjual -->
-        <div class="border-b border-slate-100 pb-3">
-          <h2 class="text-base font-bold text-slate-800">Panduan & Generator Data Kantin</h2>
-          <p class="text-xs text-slate-500 mt-1">Kelola daftar jajanan dan stok secara langsung untuk dipasang di GitHub.</p>
-        </div>
-
-        <!-- Form Generator Data Baru -->
-        <div class="bg-white border border-blue-100 p-4 rounded-xl shadow-sm space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-blue-700">1. Tambah / Update Item Sementara</h3>
+      <!-- B. PENJUAL (Input & Manajemen Stok) -->
+      <section id="page-penjual" class="hidden space-y-4">
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
+            <i class="fa-solid fa-plus-circle text-blue-600"></i> Tambah Produk ATK Baru
+          </h3>
           
-          <form id="editor-form" onsubmit="tambahItemKeJSON(event)" class="space-y-3 text-xs">
+          <form id="form-atk" onsubmit="tambahBarang(event)" class="space-y-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Nama Barang</label>
-              <input type="text" id="input-nama" required placeholder="Contoh: Nasi Jinggo" class="w-full border p-2 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none">
+              <label class="block text-[11px] font-semibold text-gray-600 mb-1">Nama Barang ATK</label>
+              <input type="text" id="input-nama" placeholder="Contoh: Pulpen Gel Hitam" required 
+                     class="w-full border text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            
+
             <div class="grid grid-cols-2 gap-2">
               <div>
-                <label class="block font-semibold text-slate-700 mb-1">Harga (Rp)</label>
-                <input type="number" id="input-harga" required placeholder="5000" class="w-full border p-2 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none">
+                <label class="block text-[11px] font-semibold text-gray-600 mb-1">Harga (Rp)</label>
+                <input type="number" id="input-harga" placeholder="3000" required 
+                       class="w-full border text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
               </div>
               <div>
-                <label class="block font-semibold text-slate-700 mb-1">Jumlah Stok</label>
-                <input type="number" id="input-stok" required placeholder="10" class="w-full border p-2 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none">
+                <label class="block text-[11px] font-semibold text-gray-600 mb-1">Jumlah Stok</label>
+                <input type="number" id="input-stok" placeholder="10" required 
+                       class="w-full border text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
               </div>
             </div>
 
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">URL Foto / Path Gambar</label>
-              <input type="text" id="input-foto" required placeholder="images/nasi-jinggo.jpg" class="w-full border p-2 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none">
+              <label class="block text-[11px] font-semibold text-gray-600 mb-1">URL Foto Produk (Optional)</label>
+              <input type="url" id="input-foto" placeholder="https://..." 
+                     class="w-full border text-xs p-2.5 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow-sm transition">
-              + Masukkan Ke Generator Code
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">
+              + Simpan Ke Katalog
             </button>
           </form>
         </div>
 
-        <!-- Code Generator Result & Copy Guide -->
-        <div class="bg-slate-900 text-slate-100 p-4 rounded-xl space-y-3 text-xs">
-          <div class="flex justify-between items-center">
-            <h3 class="font-bold text-blue-400">2. Hasil Kode JSON (`data.json`)</h3>
-            <button onclick="salinKodeJSON()" class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold px-2.5 py-1 rounded">
-              📋 Salin JSON
-            </button>
-          </div>
-          <p class="text-slate-400 text-[11px]">Salin semua kode di bawah ini dan tempelkan (*paste*) ke file <code class="text-yellow-300">data.json</code> di repository GitHub milikmu.</p>
-          
-          <pre id="json-preview" class="bg-slate-950 p-3 rounded-lg font-mono text-[11px] overflow-x-auto text-green-400 border border-slate-800 max-h-48 no-scrollbar"></pre>
-        </div>
-
-        <!-- Steps Guide GitHub -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs space-y-1.5 text-amber-900">
-          <p class="font-bold flex items-center gap-1">📌 Langkah Update di GitHub HP/PC:</p>
-          <ol class="list-decimal pl-4 space-y-1 text-amber-800 text-[11px]">
-            <li>Buka Repository GitHub Kantin milikmu.</li>
-            <li>Buka file <b>data.json</b> lalu klik ikon pensil (<i>Edit</i>).</li>
-            <li>Hapus semua isinya, lalu <b>Paste (Tempel)</b> kode JSON di atas.</li>
-            <li>Klik tombol hijau <b>Commit Changes</b>. Data otomatis diperbarui di web!</li>
-          </ol>
-        </div>
-
-      </section>
-
-      <!-- ================= 3. TAB BAGIKAN (QR CODE & LINK) ================= -->
-      <section id="tab-bagikan" class="hidden space-y-5 text-center py-4">
-        
-        <div class="space-y-1">
-          <h2 class="text-base font-bold text-slate-800">Bagikan Akses Kantin Digital</h2>
-          <p class="text-xs text-slate-500">Tempel QR Code ini di meja atau area fisik Kantin Kejujuran.</p>
-        </div>
-
-        <!-- Card QR Code -->
-        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-md inline-block space-y-4 max-w-[280px] mx-auto">
-          <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 inline-block">
-            <!-- Dynamic QR Code API -->
-            <img id="qr-code-img" 
-                 src="" 
-                 alt="QR Code Kantin" 
-                 class="w-48 h-48 mx-auto rounded-lg shadow-sm">
-          </div>
-          <div>
-            <p class="text-xs font-bold text-blue-900">Scan Pakai HP</p>
-            <p class="text-[10px] text-slate-500">Langsung cek daftar jajanan & stok yang tersedia</p>
-          </div>
-        </div>
-
-        <!-- Action Button Copy Link -->
-        <div class="px-4">
-          <button onclick="salinLinkAplikasi()" 
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm">
-            <span>🔗</span>
-            <span>Salin Link Kantin Kejujuran</span>
+        <!-- Ekspor Data JSON -->
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-xs space-y-2">
+          <p class="font-semibold text-gray-700">Kode Data JSON untuk `data.json` di GitHub:</p>
+          <textarea id="json-output" readonly rows="4" class="w-full p-2 bg-white border rounded-lg font-mono text-[10px] text-gray-600"></textarea>
+          <button onclick="copyJSON()" class="w-full bg-slate-800 text-white font-bold py-1.5 rounded-lg text-[11px]">
+            📋 Copy Kode JSON
           </button>
         </div>
+      </section>
 
+      <!-- C. BAGIKAN (QR Code Akses) -->
+      <section id="page-bagikan" class="hidden bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 shadow-sm">
+        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-qrcode text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-800 text-sm">QR Code Kantin Kejujuran</h3>
+          <p class="text-xs text-gray-400 mt-1">Cetak dan tempel QR Code ini di meja Kantin Kejujuran fisik sekolah.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-4 rounded-2xl inline-block border">
+          <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://github.com" alt="QR Code" class="mx-auto rounded-lg">
+        </div>
+
+        <button onclick="copyURL()" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded-xl text-xs shadow hover:bg-blue-700 transition">
+          🔗 Salin Link Web Kantin
+        </button>
       </section>
 
     </main>
 
-    <!-- Bottom Navigation Bar (Fixed Bottom) -->
-    <nav class="bg-white border-t border-slate-200 flex justify-around items-center p-2 shadow-lg relative z-20">
-      <button onclick="switchTab('beranda')" id="nav-beranda" class="flex-1 py-1.5 flex flex-col items-center text-blue-600 font-bold transition">
-        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-        <span class="text-[10px]">Beranda</span>
+    <!-- 3. BOTTOM NAVIGATION BAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-2.5 shadow-lg max-w-md mx-auto z-20">
+      <button onclick="switchTab('beranda')" id="tab-beranda" class="text-blue-600 font-bold flex flex-col items-center gap-1 text-[11px]">
+        <i class="fa-solid fa-house text-base"></i> Beranda
       </button>
-
-      <button onclick="switchTab('penjual')" id="nav-penjual" class="flex-1 py-1.5 flex flex-col items-center text-slate-400 font-medium hover:text-blue-600 transition">
-        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-        <span class="text-[10px]">Penjual</span>
+      <button onclick="switchTab('penjual')" id="tab-penjual" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
+        <i class="fa-solid fa-store text-base"></i> Penjual
       </button>
-
-      <button onclick="switchTab('bagikan')" id="nav-bagikan" class="flex-1 py-1.5 flex flex-col items-center text-slate-400 font-medium hover:text-blue-600 transition">
-        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-        <span class="text-[10px]">Bagikan</span>
+      <button onclick="switchTab('bagikan')" id="tab-bagikan" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
+        <i class="fa-solid fa-share-nodes text-base"></i> Bagikan
       </button>
     </nav>
 
-    <!-- Toast Notification Message Box -->
-    <div id="toast" class="fixed bottom-16 left-1/2 transform -translate-x-1/2 bg-slate-900/90 text-white text-xs px-4 py-2 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50">
-      Notifikasi
-    </div>
-
   </div>
 
-  <!-- JavaScript Logic -->
   <script>
-    // Mock Data Default (digunakan sebagai fallback jika data.json belum dibuat di GitHub)
-    const fallbackData = [
-      {
-        "nama": "Nasi Jinggo Ayam",
-        "harga": 5000,
-        "stok": 12,
-        "foto": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80"
-      },
-      {
-        "nama": "Es Teh Manis",
-        "harga": 2000,
-        "stok": 8,
-        "foto": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80"
-      },
-      {
-        "nama": "Roti Cokelat",
-        "harga": 3000,
-        "stok": 0,
-        "foto": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80"
-      },
-      {
-        "nama": "Kripik Singkong",
-        "harga": 2000,
-        "stok": 5,
-        "foto": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80"
-      }
-    ];
+    // Inisialisasi Data Kosong
+    let produkList = [];
 
-    let currentProduk = [];
+    // Switch Tab Navigasi
+    function switchTab(tab) {
+      document.getElementById('page-beranda').classList.add('hidden');
+      document.getElementById('page-penjual').classList.add('hidden');
+      document.getElementById('page-bagikan').classList.add('hidden');
 
-    // Initialize Application
-    window.onload = function() {
-      fetchDataJSON();
-      generateQRCode();
-    };
+      document.getElementById('tab-beranda').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
+      document.getElementById('tab-penjual').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
+      document.getElementById('tab-bagikan').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
 
-    // 1. Fetch Data dari data.json
-    async function fetchDataJSON() {
-      try {
-        const response = await fetch('data.json');
-        if (!response.ok) throw new Error('File data.json belum ditemukan');
-        currentProduk = await response.json();
-      } catch (err) {
-        console.warn('Menggunakan data fallback/demo karena data.json belum siap:', err.message);
-        currentProduk = [...fallbackData];
-      } finally {
-        renderProduk(currentProduk);
-        updateJSONPreview();
-      }
+      document.getElementById(`page-${tab}`).classList.remove('hidden');
+      document.getElementById(`tab-${tab}`).className = "text-blue-600 font-bold flex flex-col items-center gap-1 text-[11px]";
     }
 
-    // 2. Render List Produk ke Beranda
-    function renderProduk(data) {
-      const container = document.getElementById('produk-container');
+    // Render Katalog di Beranda
+    function renderKatalog() {
+      const grid = document.getElementById('katalog-grid');
       const emptyState = document.getElementById('empty-state');
-      container.innerHTML = '';
+      const searchKeyword = document.getElementById('search-input').value.toLowerCase();
+      
+      const filtered = produkList.filter(p => p.nama.toLowerCase().includes(searchKeyword));
 
-      if (data.length === 0) {
+      document.getElementById('total-item-count').innerText = `${filtered.length} Produk`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
         emptyState.classList.remove('hidden');
         return;
-      } else {
-        emptyState.classList.add('hidden');
       }
 
-      data.forEach(item => {
-        const isAvailable = item.stok > 0;
-        
-        const cardHTML = `
-          <div class="bg-white rounded-xl border border-blue-100 shadow-sm overflow-hidden flex flex-col justify-between transition hover:shadow-md">
-            <div>
-              <!-- Foto Produk -->
-              <div class="relative w-full h-28 bg-slate-100">
-                <img src="${item.foto}" 
-                     alt="${item.nama}" 
-                     class="w-full h-full object-cover"
-                     onerror="this.onerror=null; this.src='https://placehold.co/300x200/1E40AF/FFFFFF?text=Foto+Jajanan';">
-                
-                <!-- Badge Stok Top-Right -->
-                <span class="absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-bold shadow-sm ${
-                  isAvailable ? 'bg-blue-600 text-white' : 'bg-red-500 text-white'
-                }">
-                  ${isAvailable ? `Stok: ${item.stok}` : 'Habis'}
-                </span>
-              </div>
-
-              <!-- Detail Barang -->
-              <div class="p-3">
-                <h3 class="font-bold text-slate-800 text-xs line-clamp-2 leading-snug">${item.nama}</h3>
-                <p class="text-blue-600 font-extrabold text-sm mt-1">
-                  Rp ${Number(item.harga).toLocaleString('id-ID')}
-                </p>
-              </div>
-            </div>
-
-            <!-- Footer Badge Indikator Kejujuran -->
-            <div class="px-3 pb-3">
-              <div class="w-full text-center py-1 rounded bg-slate-50 text-[10px] font-semibold text-slate-500 border border-slate-100">
-                Display Sah
-              </div>
-            </div>
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
+          <div class="relative h-28 bg-gray-100">
+            <img src="${item.foto || 'https://via.placeholder.com/150?text=ATK'}" class="w-full h-full object-cover" alt="${item.nama}">
+            <span class="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full ${item.stok > 0 ? 'bg-blue-600 text-white' : 'bg-red-500 text-white'} shadow">
+              ${item.stok > 0 ? 'Stok: ' + item.stok : 'Habis'}
+            </span>
           </div>
-        `;
-        container.insertAdjacentHTML('beforeend', cardHTML);
-      });
+          <div class="p-3">
+            <h4 class="font-bold text-xs text-gray-800 line-clamp-1">${item.nama}</h4>
+            <p class="text-blue-600 font-extrabold text-xs mt-1">Rp ${Number(item.harga).toLocaleString('id-ID')}</p>
+          </div>
+        </div>
+      `).join('');
     }
 
-    // 3. Filter / Search Produk
-    function filterProduk() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      const filtered = currentProduk.filter(item => 
-        item.nama.toLowerCase().includes(query)
-      );
-      renderProduk(filtered);
-    }
-
-    // 4. Switch Tab Navigation
-    function switchTab(tabName) {
-      // Hide all tabs
-      document.getElementById('tab-beranda').classList.add('hidden');
-      document.getElementById('tab-penjual').classList.add('hidden');
-      document.getElementById('tab-bagikan').classList.add('hidden');
-
-      // Reset nav button styling
-      const tabs = ['beranda', 'penjual', 'bagikan'];
-      tabs.forEach(t => {
-        const btn = document.getElementById(`nav-${t}`);
-        btn.className = "flex-1 py-1.5 flex flex-col items-center text-slate-400 font-medium hover:text-blue-600 transition";
-      });
-
-      // Active tab styling
-      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-      const activeBtn = document.getElementById(`nav-${tabName}`);
-      activeBtn.className = "flex-1 py-1.5 flex flex-col items-center text-blue-600 font-bold transition";
-    }
-
-    // 5. Tambah Item Baru & Update JSON Preview
-    function tambahItemKeJSON(e) {
+    // Tambah Barang dari Tab Penjual
+    function tambahBarang(e) {
       e.preventDefault();
-      
       const nama = document.getElementById('input-nama').value;
       const harga = Number(document.getElementById('input-harga').value);
       const stok = Number(document.getElementById('input-stok').value);
       const foto = document.getElementById('input-foto').value;
 
-      const newItem = { nama, harga, stok, foto };
+      produkList.push({ nama, harga, stok, foto });
       
-      // Tambahkan di paling atas list
-      currentProduk.unshift(newItem);
-      
-      // Update UI dan JSON Preview
-      renderProduk(currentProduk);
-      updateJSONPreview();
-      
-      // Reset Form Input
-      document.getElementById('editor-form').reset();
-      showToast('Berhasil ditambahkan ke kode JSON!');
+      document.getElementById('form-atk').reset();
+      updateJSONOutput();
+      renderKatalog();
+      alert('Produk ATK berhasil ditambahkan!');
+      switchTab('beranda');
     }
 
-    function updateJSONPreview() {
-      const jsonStr = JSON.stringify(currentProduk, null, 2);
-      document.getElementById('json-preview').textContent = jsonStr;
+    function updateJSONOutput() {
+      document.getElementById('json-output').value = JSON.stringify(produkList, null, 2);
     }
 
-    // 6. Salin Kode JSON ke Clipboard
-    function salinKodeJSON() {
-      const code = document.getElementById('json-preview').textContent;
-      copyToClipboard(code);
-      showToast('Kode JSON berhasil disalin!');
+    function copyJSON() {
+      const copyText = document.getElementById("json-output");
+      copyText.select();
+      navigator.clipboard.writeText(copyText.value);
+      alert("Kode JSON disalin! Tempelkan ke file data.json di GitHub.");
     }
 
-    // 7. Generate QR Code untuk Link Aplikasi
-    function generateQRCode() {
-      const appUrl = window.location.href;
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(appUrl)}`;
-      document.getElementById('qr-code-img').src = qrApiUrl;
+    function copyURL() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link Kantin berhasil disalin!');
     }
 
-    // 8. Salin Link Aplikasi
-    function salinLinkAplikasi() {
-      copyToClipboard(window.location.href);
-      showToast('Link Kantin berhasil disalin!');
-    }
-
-    // Helper Copy to Clipboard with fallback
-    function copyToClipboard(text) {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text);
-      } else {
-        // Legacy copy approach for iframe restrictions
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-    }
-
-    // Helper Toast Message
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.remove('opacity-0', 'pointer-events-none');
-      
-      setTimeout(() => {
-        toast.classList.add('opacity-0', 'pointer-events-none');
-      }, 2500);
-    }
+    // Setup Awal QR Code dari URL Saat Ini
+    document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(window.location.href)}`;
+    
+    // Load pertama
+    renderKatalog();
+    updateJSONOutput();
   </script>
 </body>
 </html>
