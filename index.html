@@ -133,6 +133,15 @@
           <div id="admin-list" class="space-y-2"></div>
         </div>
 
+        <!-- OUTPUT KODE JSON UNTUK DISIMPAN DI GITHUB -->
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-xs space-y-2">
+          <p class="font-semibold text-gray-700">Kode Data JSON (Untuk di-paste ke file `data.json` di GitHub):</p>
+          <textarea id="json-output" readonly rows="4" class="w-full p-2 bg-white border rounded-lg font-mono text-[10px] text-gray-600"></textarea>
+          <button onclick="copyJSON()" class="w-full bg-slate-800 text-white font-bold py-2 rounded-xl text-xs shadow">
+            📋 Salin Kode JSON
+          </button>
+        </div>
+
       </section>
 
       <!-- BAGIKAN -->
@@ -196,6 +205,20 @@
   <script>
     let produkList = [];
     let isAdminUnlocked = false;
+
+    // OTOMATIS AMBIL DATA DARI DATA.JSON DI GITHUB
+    async function muatDataJSON() {
+      try {
+        const response = await fetch('data.json');
+        if (response.ok) {
+          produkList = await response.json();
+          renderKatalog();
+          updateJSONOutput();
+        }
+      } catch (error) {
+        console.log('Belum ada file data.json atau gagal memuat data.');
+      }
+    }
 
     function switchTab(tab) {
       document.getElementById('page-beranda').classList.add('hidden');
@@ -306,15 +329,16 @@
 
       if (idx === -1) {
         produkList.push({ nama, harga, stok, foto });
-        alert('Produk berhasil ditambahkan!');
+        alert('Produk berhasil ditambahkan! Silakan salin Kode JSON di bawah dan paste ke file data.json di GitHub.');
       } else {
         produkList[idx] = { nama, harga, stok, foto };
-        alert('Produk berhasil diperbarui!');
+        alert('Produk berhasil diperbarui! Silakan salin Kode JSON di bawah dan paste ke file data.json di GitHub.');
       }
 
       resetForm();
       renderKatalog();
       renderAdminList();
+      updateJSONOutput();
     }
 
     function editBarang(index) {
@@ -343,7 +367,19 @@
         produkList.splice(index, 1);
         renderKatalog();
         renderAdminList();
+        updateJSONOutput();
       }
+    }
+
+    function updateJSONOutput() {
+      document.getElementById('json-output').value = JSON.stringify(produkList, null, 2);
+    }
+
+    function copyJSON() {
+      const copyText = document.getElementById("json-output");
+      copyText.select();
+      navigator.clipboard.writeText(copyText.value);
+      alert("Kode JSON disalin! Tinggal buka file data.json di GitHub lalu paste & commit.");
     }
 
     function copyURL() {
@@ -353,7 +389,8 @@
 
     document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(window.location.href)}`;
     
-    renderKatalog();
+    // Jalankan pemuatan data otomatis saat aplikasi dibuka
+    muatDataJSON();
   </script>
 </body>
 </html>
