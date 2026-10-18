@@ -80,7 +80,6 @@
       <!-- ADMIN (FORM + KELOLA) -->
       <section id="page-admin" class="hidden space-y-5">
         
-        <!-- FORM TAMBAH / EDIT BARANG -->
         <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
           <h3 id="form-title" class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
             <i class="fa-solid fa-plus-circle text-blue-600"></i> Tambah Produk ATK Baru
@@ -125,7 +124,6 @@
           </form>
         </div>
 
-        <!-- DAFTAR KELOLA BARANG ADMIN -->
         <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
           <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2 border-b pb-2">
             <i class="fa-solid fa-list-check text-blue-600"></i> Kelola Stok & Harga
@@ -133,7 +131,6 @@
           <div id="admin-list" class="space-y-2"></div>
         </div>
 
-        <!-- OUTPUT KODE JSON UNTUK DISIMPAN DI GITHUB -->
         <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-xs space-y-2">
           <p class="font-semibold text-gray-700">Kode Data JSON (Untuk di-paste ke file `data.json` di GitHub):</p>
           <textarea id="json-output" readonly rows="4" class="w-full p-2 bg-white border rounded-lg font-mono text-[10px] text-gray-600"></textarea>
@@ -142,6 +139,22 @@
           </button>
         </div>
 
+      </section>
+
+      <!-- TAB SARAN & ASPIRASI -->
+      <section id="page-saran" class="hidden bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 shadow-sm">
+        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-comments text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-800 text-sm">Kotak Saran & Aspirasi</h3>
+          <p class="text-xs text-gray-400 mt-1">Punya saran barang ATK baru atau masukan untuk Kantin Kejujuran? Sampaikan di sini ya!</p>
+        </div>
+
+        <!-- UBAH LINK GOOGLE FORM KAMU DI SINI -->
+        <a href="https://forms.google.com" target="_blank" class="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow hover:bg-blue-700 transition">
+          📝 Isi Form Saran
+        </a>
       </section>
 
       <!-- BAGIKAN -->
@@ -187,10 +200,13 @@
       </div>
     </div>
 
-    <!-- BOTTOM NAV BAR -->
+    <!-- BOTTOM NAV BAR (4 TAB) -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-2.5 shadow-lg max-w-md mx-auto z-20">
       <button onclick="switchTab('beranda')" id="tab-beranda" class="text-blue-600 font-bold flex flex-col items-center gap-1 text-[11px]">
         <i class="fa-solid fa-house text-base"></i> Beranda
+      </button>
+      <button onclick="switchTab('saran')" id="tab-saran" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
+        <i class="fa-solid fa-comment-dots text-base"></i> Saran
       </button>
       <button onclick="mintaAksesAdmin()" id="tab-admin" class="text-gray-400 flex flex-col items-center gap-1 text-[11px]">
         <i class="fa-solid fa-user-shield text-base"></i> Admin
@@ -206,7 +222,6 @@
     let produkList = [];
     let isAdminUnlocked = false;
 
-    // OTOMATIS AMBIL DATA DARI DATA.JSON DI GITHUB
     async function muatDataJSON() {
       try {
         const response = await fetch('data.json');
@@ -223,9 +238,11 @@
     function switchTab(tab) {
       document.getElementById('page-beranda').classList.add('hidden');
       document.getElementById('page-admin').classList.add('hidden');
+      document.getElementById('page-saran').classList.add('hidden');
       document.getElementById('page-bagikan').classList.add('hidden');
 
       document.getElementById('tab-beranda').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
+      document.getElementById('tab-saran').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
       document.getElementById('tab-admin').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
       document.getElementById('tab-bagikan').className = "text-gray-400 flex flex-col items-center gap-1 text-[11px]";
 
@@ -389,7 +406,6 @@
 
     document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(window.location.href)}`;
     
-    // Jalankan pemuatan data otomatis saat aplikasi dibuka
     muatDataJSON();
   </script>
 </body>
